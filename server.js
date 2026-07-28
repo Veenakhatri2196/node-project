@@ -161,7 +161,7 @@ io.on("connection", (socket) => {
 
 // MongoDB Connection
 
-mongoose.connect("process.env.MONGODB_URI")
+mongoose.connect(process.env.MONGODB_URI)
 
 .then(() => {
 
