@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <title>User Registration</title>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -8,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body class="bg-light">
@@ -26,100 +29,107 @@
 
                 <div class="col-md-6 mb-3">
                     <label>First Name</label>
-                    <input type="text" class="form-control"
-                    id="firstName"
-                    pattern="[A-Za-z ]+"
-                    oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"
-                    required>
+                    <input type="text"
+                           class="form-control"
+                           id="firstName"
+                           pattern="[A-Za-z ]+"
+                           oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"
+                           required>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>Last Name</label>
-                    <input type="text" class="form-control"
-                    id="lastName"
-                    pattern="[A-Za-z ]+"
-                    oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"
-                    required>
+                    <input type="text"
+                           class="form-control"
+                           id="lastName"
+                           pattern="[A-Za-z ]+"
+                           oninput="this.value=this.value.replace(/[^A-Za-z ]/g,'')"
+                           required>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>Mobile</label>
                     <input type="text"
-                    class="form-control"
-                    id="mobile"
-                    maxlength="10"
-                    oninput="this.value=this.value.replace(/[^0-9]/g,'')"
-                    required>
+                           class="form-control"
+                           id="mobile"
+                           maxlength="10"
+                           oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                           required>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>Email</label>
                     <input type="email"
-                    class="form-control"
-                    id="email"
-                    required>
+                           class="form-control"
+                           id="email"
+                           required>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>Street</label>
                     <input type="text"
-                    class="form-control"
-                    id="street"
-                    required>
+                           class="form-control"
+                           id="street"
+                           required>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>City</label>
                     <input type="text"
-                    class="form-control"
-                    id="city"
-                    required>
+                           class="form-control"
+                           id="city"
+                           required>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>State</label>
                     <input type="text"
-                    class="form-control"
-                    id="state"
-                    required>
+                           class="form-control"
+                           id="state"
+                           required>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>Country</label>
                     <input type="text"
-                    class="form-control"
-                    id="country"
-                    required>
+                           class="form-control"
+                           id="country"
+                           required>
                 </div>
 
                 <div class="col-md-6 mb-3">
                     <label>Login ID</label>
                     <input type="text"
-                    class="form-control"
-                    id="loginId"
-                    maxlength="8"
-                    required>
+                           class="form-control"
+                           id="loginId"
+                           maxlength="8"
+                           required>
                 </div>
 
                 <div class="col-md-6 mb-4">
                     <label>Password</label>
                     <input type="password"
-                    class="form-control"
-                    id="password"
-                    required>
+                           class="form-control"
+                           id="password"
+                           required>
                 </div>
 
             </div>
 
             <div class="text-center">
 
-                <button class="btn btn-success px-5">
+                <button type="submit" class="btn btn-success px-5">
                     Save User
                 </button>
 
                 <a href="view.html"
-                class="btn btn-primary px-5 ms-3">
+                   class="btn btn-primary px-4 ms-3">
                     View Users
+                </a>
+
+                <a href="live-users.html"
+                   class="btn btn-warning px-4 ms-3">
+                    Live Users
                 </a>
 
             </div>
@@ -130,6 +140,11 @@
 
 </div>
 
+<!-- Socket.IO Client -->
+<script src="/socket.io/socket.io.js"></script>
+
+<!-- Your JavaScript -->
 <script src="script.js"></script>
 
 </body>
+</html>
