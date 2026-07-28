@@ -1,0 +1,33 @@
+body{
+
+    background:#f4f6f9;
+
+}
+
+.card{
+
+    width:700px;
+
+    margin:auto;
+
+    border-radius:15px;
+
+}
+
+label{
+
+    font-weight:bold;
+
+}
+
+.btn{
+
+    border-radius:30px;
+
+}
+
+input{
+
+    height:45px;
+
+}
