@@ -4,30 +4,65 @@ $(document).ready(function () {
 
         e.preventDefault();
 
+        let firstName = $("#firstName").val().trim();
+        let lastName = $("#lastName").val().trim();
+        let mobile = $("#mobile").val().trim();
+        let email = $("#email").val().trim();
+        let street = $("#street").val().trim();
+        let city = $("#city").val().trim();
+        let state = $("#state").val().trim();
+        let country = $("#country").val().trim();
+        let loginId = $("#loginId").val().trim();
+        let password = $("#password").val();
+
+        // Validation Patterns
+        let namePattern = /^[A-Za-z\s]+$/;
+        let mobilePattern = /^[0-9]{10}$/;
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Frontend Validation
+        if (!namePattern.test(firstName)) {
+            alert("First Name should contain only alphabets.");
+            return;
+        }
+
+        if (!namePattern.test(lastName)) {
+            alert("Last Name should contain only alphabets.");
+            return;
+        }
+
+        if (!mobilePattern.test(mobile)) {
+            alert("Mobile Number must contain exactly 10 digits.");
+            return;
+        }
+
+        if (!emailPattern.test(email)) {
+            alert("Please enter a valid Email Address.");
+            return;
+        }
+
         let user = {
 
-            firstName: $("#firstName").val(),
-            lastName: $("#lastName").val(),
-            mobile: $("#mobile").val(),
-            email: $("#email").val(),
+            firstName: firstName,
+            lastName: lastName,
+            mobile: mobile,
+            email: email,
 
             address: {
-
-                street: $("#street").val(),
-                city: $("#city").val(),
-                state: $("#state").val(),
-                country: $("#country").val()
-
+                street: street,
+                city: city,
+                state: state,
+                country: country
             },
 
-            loginId: $("#loginId").val(),
-            password: $("#password").val()
+            loginId: loginId,
+            password: password
 
         };
 
         $.ajax({
 
-            url: "http://localhost:3000/api/users",
+            url: "/api/users",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify(user),
@@ -40,9 +75,45 @@ $(document).ready(function () {
 
             },
 
-            error: function (err) {
+            error: function (xhr) {
 
-                alert(err.responseJSON.message);
+                console.log(xhr);
+
+                if (xhr.responseJSON) {
+
+                    if (xhr.responseJSON.errors) {
+
+                        let errorMessage = "";
+
+                        Object.values(xhr.responseJSON.errors).forEach(function (msg) {
+
+                            errorMessage += "• " + msg + "\n";
+
+                        });
+
+                        alert(errorMessage);
+
+                    }
+
+                    else if (xhr.responseJSON.message) {
+
+                        alert(xhr.responseJSON.message);
+
+                    }
+
+                    else {
+
+                        alert("Unable to register user.");
+
+                    }
+
+                }
+
+                else {
+
+                    alert("Server Error.");
+
+                }
 
             }
 

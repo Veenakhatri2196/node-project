@@ -1,17 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
+
 const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
 // Middleware
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
-// Public folder ko serve karna
-app.use(express.static("public"));
+// Public Folder
+app.use(express.static(path.join(__dirname, "public")));
+
+// Routes
 app.use("/api", userRoutes);
 
 // MongoDB Connection
@@ -23,13 +27,13 @@ mongoose.connect("mongodb://127.0.0.1:27017/userdb")
     console.log("Connection Error:", err);
 });
 
-// Test Route
+// Default Route
 app.get("/", (req, res) => {
-    res.send("Server is Running...");
+    res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Server Start
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
